@@ -1,0 +1,23 @@
+﻿@model UrlEditViewModel
+
+
+<div class="container">
+    <h2>Edit Url</h2>
+    <div class="row gx-5">
+        <form asp-controller="Url" asp-action="Edit" asp-antiforgery="true" method="post">
+
+            <div>
+                <input type="hidden" asp-for="Id" />
+                <div class="mb-3">
+                    <label class="col-sm-2 col-form-label" asp-for="ShortUrl"></label>
+                    <input class="form-control" type="text" asp-for="ShortUrl">
+                </div>
+                <div class="mb-3">
+                    <label class="col-sm-2 col-form-label" asp-for="DateCreated"></label>
+                    <input type="datetime-local" class="form-control" asp-for="DateCreated">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

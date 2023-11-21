@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Handlers\CommandHandlers\UrlCommandHandlers\" />
+    <Folder Include="Handlers\QueryHandler\UrlQueryHandlers\" />
+    <Folder Include="Models\Commands\UrlCommands\" />
+    <Folder Include="Models\Queries\UrlQueries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LinkShorteningSite.Core\LinkShorteningSite.Core.csproj" />
+    <ProjectReference Include="..\LinkShorteningSite.Data\LinkShorteningSite.Data.csproj" />
+  </ItemGroup>
+
+</Project>

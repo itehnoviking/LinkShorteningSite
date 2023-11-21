@@ -1,0 +1,26 @@
+﻿@model UrlViewModel
+
+<div class="container">
+    <p class="lead">
+        Are you sure that you want delete url with id:"@Model.Id"
+    </p>
+    
+    <div class="card-body">
+        <b>Full Url</b>: @Model.FullUrl
+    </div>
+    <div class="card-body">
+        <b>Short Url</b>: @Model.ShortUrl
+    </div>
+    <div class="card-body">
+        <b>Date Created</b>: @Model.DateCreated
+    </div>
+    <div class="card-body">
+        <b>Jump Counter</b>: @Model.JumpCounter
+    </div>
+
+    <form asp-controller="Url" asp-action="Delete" method="post">
+        <input asp-for="Id" type="hidden" />
+        <a asp-action="Index" asp-controller="Url" class="btn btn-primary">Cancel</a>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+</div>
