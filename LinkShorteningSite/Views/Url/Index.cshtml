@@ -21,7 +21,7 @@
             </td>
             <td>
                 <div class="card-body">
-                    @item.ShortUrl
+                    <a asp-controller="Url" asp-action="JumpCounter" asp-route-shortUrl="@item.ShortUrl" type="text">@item.ShortUrl</a>
                 </div>
             </td>
             <td>

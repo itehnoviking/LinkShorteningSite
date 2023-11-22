@@ -40,6 +40,16 @@ namespace LinkShorteningSite.Controllers
         {
             try
             {
+                var validationResults = new List<ValidationResult>();
+                if (!Validator.TryValidateObject(viewModel, new ValidationContext(viewModel), validationResults, true))
+                {
+                    foreach (var validationResult in validationResults)
+                    {
+                        ModelState.AddModelError(validationResult.MemberNames.FirstOrDefault() ?? "", validationResult.ErrorMessage);
+                    }
+                    return View(viewModel);
+                }
+
                 var urlDto = _mapper.Map<UrlDto>(viewModel);
 
                 await _urlService.CreateUrlAsync(urlDto);
@@ -148,6 +158,15 @@ namespace LinkShorteningSite.Controllers
         {
             try
             {
+                var isShortUrlUniq = await _urlService.CheckingShortUrlInDatabase(viewModel.Id, viewModel.ShortUrl);
+
+                if (isShortUrlUniq)
+                {
+                    ModelState.AddModelError("ShortUrl", "ShortUrl is already in the database");
+                    return View(viewModel);
+                }
+
+
 
                 await _urlService.UpdateUrlAsync(viewModel.Id, viewModel.ShortUrl, viewModel.DateCreated);
 
@@ -167,6 +186,14 @@ namespace LinkShorteningSite.Controllers
 
                 return BadRequest();
             }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> JumpCounter(string shortUrl)
+        {
+            var fullUrl = await _urlService.JumpCounterAndReturnFullUrlAsync(shortUrl);
+
+            return Redirect(fullUrl);
         }
     }
 }
