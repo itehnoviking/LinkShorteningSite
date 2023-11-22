@@ -9,4 +9,6 @@ public interface IUrlService
     Task<UrlDto> GetUrlByIdAsync(int id);
     Task DeleteUrlByIdAsync(int id);
     Task UpdateUrlAsync(int id, string shortUrl, DateTime dateCreated);
+    Task<string> JumpCounterAndReturnFullUrlAsync(string shortUrl);
+    Task<bool> CheckingShortUrlInDatabase(int id, string shortUrl);
 }

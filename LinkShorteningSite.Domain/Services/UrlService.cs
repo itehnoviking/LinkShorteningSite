@@ -51,6 +51,20 @@ public class UrlService : IUrlService
         await _mediator.Send(new UpdateUrlCommand(id, shortUrl, dateCreated), new CancellationToken());
     }
 
+    public async Task<string> JumpCounterAndReturnFullUrlAsync(string shortUrl)
+    {
+        var fullUrl = await _mediator.Send(new JumpCounterAndReturnFullUrlCommand(shortUrl), new CancellationToken());
+
+        return fullUrl;
+    }
+
+    public async Task<bool> CheckingShortUrlInDatabase(int id, string shortUrl)
+    {
+        var result = await _mediator.Send(new CheckingShortUrlInDatabaseQuery(id, shortUrl), new CancellationToken());
+
+        return result;
+    }
+
 
     private string GenerateShortUrl(string salt)
     {
