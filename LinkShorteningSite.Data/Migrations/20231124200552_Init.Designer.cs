@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LinkShorteningSite.Data.Migrations
 {
     [DbContext(typeof(LinkShorteningSiteContext))]
-    [Migration("20231120155652_Init")]
+    [Migration("20231124200552_Init")]
     partial class Init
     {
         /// <inheritdoc />
