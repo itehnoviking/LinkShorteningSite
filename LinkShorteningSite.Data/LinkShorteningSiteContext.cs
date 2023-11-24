@@ -11,6 +11,7 @@ namespace LinkShorteningSite.Data
         public LinkShorteningSiteContext(DbContextOptions options, IConfiguration configuration) : base(options)
         {
             _configuration = configuration;
+            Database.EnsureCreated();
 
         }
 
