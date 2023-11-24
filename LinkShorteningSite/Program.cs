@@ -12,6 +12,8 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<LinkShorteningSiteContext>(opt
     => opt.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString), b => b.MigrationsAssembly("LinkShorteningSite.Data")));
 
+
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
